@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>История развития мобильных технологий</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+</head>
+<body>
+
+<div class="menu">
+  <a class="menu">Window</a>
+  <a id="navigatorButton" class="menu">Navigator</a>
+  <a id="locationButton" class="menu">Location</a>
+  <a id="screenButton" class="menu">Screen</a>
+</div>
+
+<div class="text">
+  <main>
+
+    <h1>История развития мобильных технологий</h1>
+    <p onmouseover="this.style.color = 'red'; this.style.fontFamily = 'Arial, sans-serif'" onmouseout="restoreDefaultStyles(this)">
+      Мобильные технологии являются одной из наиболее быстро развивающихся отраслей в современном мире.
+      Они изменили способ, которым мы общаемся, работаем и развлекаемся.
+      Взглянем на ключевые моменты и события в истории этой области.</p>
+
+    <p onmouseover="adjustParagraphStyles(this)" onmouseout="restoreDefaultStyles(this)">
+      История мобильных технологий насчитывает несколько десятилетий значительных изменений.
+      С момента выпуска первого мобильного телефона в 1973 году, эти устройства претерпели огромную эволюцию,
+      став не только средством связи, но и мультимедийным и платформами,
+      персональными помощниками и инструментами для работы.
+      Развитие смартфонов, 4G и 5G сетей, а также приложений привели к тому,
+      что мобильные технологии стали неотъемлемой частью нашей повседневной жизни,
+      оказывая влияние на практически все сферы общества, от медицины и образования до экономики и развлечений.
+      Впереди нас ждут ещё более захватывающие инновации, которые продолжат менять наш мир.</p>
+
+    <h2>Хронология развития мобильных технологий</h2>
+    <p class="news"><span class="date">03.04.1973 - </span>Первый мобильный телефон Motorola DynaTAC</p>
+    <p class="news"><span class="date">06.08.1991 - </span>Запуск первой сети мобильной связи 2G</p>
+    <p class="news"><span class="date">12.12.1992 - </span>Появление первого SMS-сообщения</p>
+    <p class="news"><span class="date">23.06.2003 - </span>Выход первого смартфона BlackBerry</p>
+    <p class="news"><span class="date">29.06.2007 - </span>Запуск первого iPhone от Apple</p>
+    <p class="news"><span class="date">2008 - </span>Появление магазина приложений Apple App Store</p>
+    <p class="news"><span class="date">04.09.2010 - </span>Запуск Android-смартфона Samsung Galaxy S</p>
+    <p class="news"><span class="date">2019 - </span>Развитие 5G-сетей</p>
+
+    <table>
+      <tr>
+        <td class="style1" onmouseover="applyStyle(this, 'style1-alt')" onmouseout="applyStyle(this, 'style1')">Раз</td>
+        <td class="style2" onmouseover="applyStyle(this, 'style2-alt')" onmouseout="applyStyle(this, 'style2')">Два</td>
+      </tr>
+    </table>
+
+    <div class="image-container">
+      <img src="images/1.png" class="image" id="image1" style="z-index: 3; left: 200px;" alt="лефрут">
+      <img src="images/2.jpg" class="image" id="image2" style="z-index: 1; left: 200px; top: 100px" alt="диогенфутбольныймячик">
+      <img src="images/3.gif" class="image" id="image3" style="z-index: 2; left: 0;" alt="камиказе">
+    </div>
+
+    <div>
+      <a onclick="makeInvisible('image2')">Сделать невидимым средний слой</a>
+      <a onclick="makeVisible('image2')">Сделать видимым средний слой</a>
+      <a onclick="swapLayers()">Поменять слои местами</a>
+    </div>
+
+  </main>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeButton">&times;</span>
+    <p id="modalInfo"></p>
+  </div>
+</div>
+
+
+<script>
+  let modal = document.getElementById('modal');
+  let modalInfoElement = document.getElementById('modalInfo');
+
+  function displayModalWindow(message) {
+    modalInfoElement.innerText = message;
+    modal.style.display = 'block';
+  }
+
+  function adjustParagraphStyles(element) {
+    element.style.marginRight = '3cm';
+    element.style.textIndent = '2.5cm';
+  }
+
+  function restoreDefaultStyles(element) {
+    element.style.color = '';
+    element.style.fontFamily = '';
+    element.style.marginRight = '';
+    element.style.textIndent = '';
+  }
+
+  function displayBrowserInfo() {
+    const browserInfo = {
+      userAgent: navigator.userAgent,
+      appName: navigator.appName,
+      appVersion: navigator.appVersion,
+      platform: navigator.platform,
+    };
+
+    const message = `User Agent: ${browserInfo.userAgent}\n`
+            + `App Name: ${browserInfo.appName}\n`
+            + `App Version: ${browserInfo.appVersion}\n`
+            + `Platform: ${browserInfo.platform}`;
+
+    displayModalWindow(message)
+  }
+  const navigatorButton = document.getElementById('navigatorButton');
+  navigatorButton.addEventListener('click', displayBrowserInfo);
+
+
+  function displayLocationInfo() {
+    const locationInfo = {
+      userName: prompt("Введите ваше имя:"),
+      documentURL: window.location.href,
+    };
+
+    const message = `Имя пользователя: ${locationInfo.userName}\n`
+            + `Адрес загруженного документа: ${locationInfo.documentURL}`;
+
+    displayModalWindow(message)
+  }
+  const locationButton = document.getElementById('locationButton');
+  locationButton.addEventListener('click', displayLocationInfo);
+
+  function displayScreenInfo() {
+    const screenInfo = {
+      width: window.screen.width,
+      height: window.screen.height,
+      colorDepth: window.screen.colorDepth,
+      pixelDepth: window.screen.pixelDepth,
+    };
+
+    const message = `Ширина экрана: ${screenInfo.width} пикселей\n`
+            + `Высота экрана: ${screenInfo.height} пикселей\n`
+            + `Глубина цвета: ${screenInfo.colorDepth} бит\n`
+            + `Глубина пикселей: ${screenInfo.pixelDepth} бит`;
+
+    const confirmation = confirm("Показать информацию об экране?");
+
+    if (confirmation) {
+      displayModalWindow(message)
+    }
+  }
+  const screenButton = document.getElementById('screenButton');
+  screenButton.addEventListener('click', displayScreenInfo);
+
+  function makeInvisible(id) {
+    const image = document.getElementById(id);
+    image.style.opacity = '0';
+  }
+
+  function makeVisible(id) {
+    const image = document.getElementById(id);
+    image.style.opacity = '1';
+  }
+
+  function swapLayers() {
+    const image1 = document.getElementById('image1');
+    const image2 = document.getElementById('image2');
+
+    const zIndex1 = image1.style.zIndex;
+    const zIndex2 = image2.style.zIndex;
+
+    image1.style.zIndex = zIndex2;
+    image2.style.zIndex = zIndex1;
+  }
+
+
+  // Закрытие модального окна
+  function closeModalWindow() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+  }
+  const closeButton = document.getElementById('closeButton');
+  closeButton.addEventListener('click', closeModalWindow);
+
+  function applyStyle(element, styleName) {
+    element.className = styleName;
+  }
+
+  // Выведем информацию о последней модификации в окно браузера.
+  alert(`Последнее обновление: ${document.lastModified}`);
+
+</script>
+
+</body>
+</html>
